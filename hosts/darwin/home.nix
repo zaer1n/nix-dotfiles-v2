@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ lib, pkgs, ... }: {
   imports = [
     ../../modules/home/vscode.nix
 

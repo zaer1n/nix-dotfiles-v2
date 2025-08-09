@@ -35,10 +35,17 @@
         "formatting.command" = ["alejandra"];
         "nixpkgs.expr" = "import <nixpkgs> {}";
         "options" = {
-          "nixos.expr" = "(builtins.getFlake \"github:zaer1n/nix-dotfiles\").nixosConfigurations.nixos.options";
-          "home-manager.expr" = "(builtins.getFlake \"github:zaer1n/nix-dotfiles\").homeConfigurations.zaer1n.options";
+          "nixos" = {
+            "expr" = "(builtins.getFlake \"github:zaer1n/nix-dotfiles\").nixosConfigurations.nixos.options";
+          };
+          "nix-darwin" = {
+            "expr" = "(builtins.getFlake \"github:zaer1n/nix-dotfiles\").darwinConfigurations.darwin.options";
+          };
         };
       };
+      "nix.hiddenLanguageServerErrors" = [
+        "textDocument/definition"
+      ];
       "[nix]" = {
         "editor.defaultFormatter" = "jnoortheen.nix-ide";
         "editor.formatOnPaste" = false;
