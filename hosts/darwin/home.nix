@@ -13,6 +13,17 @@
     raycast
     nixd
     ani-cli
+    devenv
+    firefox
+    (taterclient-ddnet.overrideAttrs {
+      version = "10.3.0";
+      src = fetchFromGitHub {
+        owner = "sjrc6";
+        repo = "taterclient-ddnet";
+        tag = "V10.3.0";
+        hash = "sha256-OEoiUtD87xsXBgAZ65mmfmAJcEvrley3drRX+IJo20s=";
+      };
+    })
   ];
 
   home.sessionVariables = {

@@ -1,4 +1,8 @@
 { lib, inputs, user, ... }: {
+  imports = [
+    ../../modules/system/macos.nix
+  ];
+
   nix.settings.experimental-features = ["nix-command flakes"];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
