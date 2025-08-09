@@ -43,7 +43,10 @@
     ];
   in {
     packages = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system}; 
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      }; 
     in
       filesystem.packagesFromDirectoryRecursive {
         inherit (pkgs) callPackage;
@@ -60,7 +63,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./hosts/nixos/home.nix;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit inputs user; };
         }
         inputs.stylix.nixosModules.stylix
       ];
@@ -75,7 +78,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./hosts/darwin/home.nix;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit inputs user; };
         }
         nix-homebrew.darwinModules.nix-homebrew {
           nix-homebrew = {

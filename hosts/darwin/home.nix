@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, user, ... }: {
   imports = [
     ../../modules/home/vscode.nix
 
@@ -12,7 +12,12 @@
   home.packages = with pkgs; [
     raycast
     nixd
+    ani-cli
   ];
+
+  home.sessionVariables = {
+    ANI_CLI_DOWNLOAD_DIR = /Users/${user}/Movies;
+  };
 
   home.activation.setWallpaper = lib.hm.dag.entryAfter ["writeBoundary"] (let 
     wallpaper = pkgs.fetchurl (builtins.elemAt (import ../../wallpapers.nix) 0);
