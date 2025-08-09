@@ -5,10 +5,7 @@
 
   stylix = {
     enable = true;
-    image = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/7j/wallhaven-7j3rpy.jpg";
-      hash = "sha256-YS6SqtcA7yYYr7NYxRdY6INGGOTiwRKFrrrc6QaZ/H8=";
-    };
+    image = pkgs.fetchurl (builtins.elemAt (import ../../wallpapers.nix) 0);
     polarity = "dark";
 
     cursor = {
@@ -28,7 +25,6 @@
         @define-color headerbar_bg_color #${config.stylix.base16Scheme.base00};
       '';
       vscode.enable = false;
-      rofi.enable = false;
     };
   };
 }

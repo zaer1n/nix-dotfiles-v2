@@ -18,7 +18,6 @@
     nixd
     overskride
     pwvucontrol
-    noto-fonts # (!)
     hyprshot
   ] ++ [
     inputs.zen-browser.packages.${pkgs.system}.default

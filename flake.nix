@@ -68,6 +68,7 @@
 
     darwinConfigurations."darwin" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
+      specialArgs = { inherit inputs user; };
       modules = [
         ./hosts/darwin/configuration.nix
         home-manager.darwinModules.home-manager {
@@ -89,7 +90,6 @@
           };
         }
       ];
-      specialArgs = { inherit inputs; };
     };
   };
 }

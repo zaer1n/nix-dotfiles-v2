@@ -1,7 +1,6 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
-    ../../modules/vscode.nix
-    ../../modules/ghostty.nix
+    ../../modules/home/vscode.nix
 
     ../../modules/home/shell/bat.nix
     ../../modules/home/shell/direnv.nix
@@ -12,11 +11,12 @@
   home.stateVersion = "25.05";
   home.packages = with pkgs; [
     raycast
-  ] ++ [
-    inputs.zen-browser.packages.${pkgs.system}.default
+    nixd
   ];
 
-  homebrew = {
-    enable = true;
-  };
+  home.activation.setWallpaper = lib.hm.dag.entryAfter ["writeBoundary"] (let 
+    wallpaper = pkgs.fetchurl (builtins.elemAt (import ../../wallpapers.nix) 0);
+  in ''
+    $DRY_RUN_CMD /usr/bin/osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"${wallpaper}\""
+  '');
 }
