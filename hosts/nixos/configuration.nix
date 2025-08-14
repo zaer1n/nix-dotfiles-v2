@@ -55,6 +55,8 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  
+  nixpkgs.overlays = [ inputs.nur.overlays.default ];
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -62,7 +64,7 @@
     tree
   ];
 
-  # https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/
+  # https://wiki.nixos.org/wiki/Hyprland#Installation
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
 

@@ -6,7 +6,9 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
+
+    # https://wiki.hypr.land/Useful-Utilities/Systemd-start/#installation
+    systemd.enable = false;
 
     # https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
     package = null;

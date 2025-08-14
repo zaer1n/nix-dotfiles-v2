@@ -19,6 +19,7 @@
     overskride
     pwvucontrol
     hyprshot
+    nur.repos.slaier.audiorelay
   ] ++ [
     inputs.zen-browser.packages.${pkgs.system}.default
   ];

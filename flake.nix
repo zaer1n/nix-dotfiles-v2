@@ -26,6 +26,10 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -43,10 +47,7 @@
     ];
   in {
     packages = forAllSystems (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      }; 
+      pkgs = nixpkgs.legacyPackages.${system};
     in
       filesystem.packagesFromDirectoryRecursive {
         inherit (pkgs) callPackage;

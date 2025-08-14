@@ -24,6 +24,7 @@
     profiles.default.userSettings = {
       "workbench.colorTheme" = "Moegi Dark Vitesse";
       "workbench.iconTheme" = "material-icon-theme";
+      "update.mode" = "none";
       "editor.minimap.enabled" = false;
       "explorer.compactFolders" = false;
       "window.titleBarStyle" = "custom";

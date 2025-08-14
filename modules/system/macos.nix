@@ -39,6 +39,11 @@
       "com.apple.Siri" = {
         VoiceTriggerUserEnabled = 1;
       };
+      
+      "com.apple.AppleMultitouchTrackpad" = {
+        TrackpadThreeFingerHorizSwipeGesture = 2;
+        TrackpadThreeFingerVertSwipeGesture = 2;
+      };
     };
   };
 }
