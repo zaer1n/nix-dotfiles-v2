@@ -1,6 +1,7 @@
 { lib, pkgs, user, ... }: {
   imports = [
     ../../modules/home/vscode.nix
+    ../../modules/home/ghostty.nix
 
     ../../modules/home/shell/bat.nix
     ../../modules/home/shell/direnv.nix

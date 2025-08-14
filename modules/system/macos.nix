@@ -9,7 +9,7 @@
       minimize-to-application = true;
       persistent-apps = [
         { app = "${pkgs.vscode}/Applications/Visual Studio Code.app"; }
-        { app = "/Applications/Ghostty.app"; }
+        { app = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
         { app = "/Applications/Zen.app"; }
       ];
     };
@@ -22,6 +22,8 @@
 
     trackpad = {
       Clicking = true;
+      TrackpadRightClick = true;
+      TrackpadThreeFingerDrag = true;
     };
 
     controlcenter = {
@@ -29,7 +31,12 @@
     };
 
     NSGlobalDomain = {
+      AppleInterfaceStyle = "Dark";
       AppleShowAllExtensions = true;
+
+      ApplePressAndHoldEnabled = false;
+      InitialKeyRepeat = 15;
+      KeyRepeat = 2;
 
       "com.apple.swipescrolldirection" = false;
       "com.apple.mouse.tapBehavior" = 1;
@@ -38,11 +45,6 @@
     CustomUserPreferences = {
       "com.apple.Siri" = {
         VoiceTriggerUserEnabled = 1;
-      };
-      
-      "com.apple.AppleMultitouchTrackpad" = {
-        TrackpadThreeFingerHorizSwipeGesture = 2;
-        TrackpadThreeFingerVertSwipeGesture = 2;
       };
     };
   };

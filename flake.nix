@@ -18,16 +18,16 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nur = {
-      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -54,6 +54,10 @@
         directory = ./packages;
       }
     );
+
+    templates = builtins.mapAttrs 
+      (name: _: { path = ./templates/${name}; }) 
+      (builtins.readDir ./templates);
 
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
