@@ -18,7 +18,6 @@
       ms-python.python
       ms-python.vscode-pylance
       ms-vscode.cpptools-extension-pack
-    ] ++ [
       inputs.self.packages.${pkgs.system}.moegi-theme
     ];
     profiles.default.userSettings = {

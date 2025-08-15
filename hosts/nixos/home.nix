@@ -4,6 +4,7 @@
     ../../modules/home/ghostty.nix
     ../../modules/home/vscode.nix
     ../../modules/home/stylix.nix
+    ../../modules/home/zen-browser.nix
 
     ../../modules/home/shell/bat.nix
     ../../modules/home/shell/direnv.nix
@@ -20,7 +21,15 @@
     pwvucontrol
     hyprshot
     nur.repos.slaier.audiorelay
-  ] ++ [
-    inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.self.packages.${system}.lncrawl
+    (taterclient-ddnet.overrideAttrs {
+      version = "10.3.0";
+      src = fetchFromGitHub {
+        owner = "sjrc6";
+        repo = "taterclient-ddnet";
+        tag = "V10.3.0";
+        hash = "sha256-OEoiUtD87xsXBgAZ65mmfmAJcEvrley3drRX+IJo20s=";
+      };
+    })
   ];
 }

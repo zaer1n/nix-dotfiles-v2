@@ -7,23 +7,24 @@
       largesize = 54;
       show-recents = false;
       minimize-to-application = true;
-      persistent-apps = [
-        { app = "${pkgs.vscode}/Applications/Visual Studio Code.app"; }
-        { app = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
+      persistent-apps = with pkgs; [
+        { app = "${vscode}/Applications/Visual Studio Code.app"; }
+        { app = "${ghostty-bin}/Applications/Ghostty.app"; }
         { app = "/Applications/Zen.app"; }
       ];
     };
     
     finder = {
+      NewWindowTarget = "Home";
+      FXPreferredViewStyle = "Nlsv";
       ShowPathbar = true;
-      ShowStatusBar = true;
-      _FXShowPosixPathInTitle = false;
+      CreateDesktop = false;
+      QuitMenuItem = true;
     };
 
     trackpad = {
       Clicking = true;
       TrackpadRightClick = true;
-      TrackpadThreeFingerDrag = true;
     };
 
     controlcenter = {
@@ -45,6 +46,16 @@
     CustomUserPreferences = {
       "com.apple.Siri" = {
         VoiceTriggerUserEnabled = 1;
+      };
+      
+      "com.apple.AppleMultitouchTrackpad" = {
+        TrackpadThreeFingerHorizSwipeGesture = 2;
+        TrackpadThreeFingerVertSwipeGesture = 2;
+      };
+
+      "com.apple.desktopservices" = {
+        DSDontWriteNetworkStores = true;
+        DSDontWriteUSBStores = true;
       };
     };
   };
